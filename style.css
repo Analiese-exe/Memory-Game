@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: linear-gradient(135deg, #ff75a0, #8763e1);
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.board {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 1em;
+  width: 100%;
+   min-height: 50vh;
+    margin-bottom: 20px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.card {
+    position: relative; /* Add this line to make the position relative */
+    height: 150px; /* Add or adjust this line according to your card's height */
+    width: 100px; /* Add or adjust this line according to your card's width */
+    background-color: white; /* Add or adjust this line to set the background color of the card */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #6f2b64;
+    transition: 0.25s;
+    transform: rotate(0deg);
+    backface-visibility: hidden;
+    border-radius: 5px; /* Add this line to match the border-radius of the card */
+}
+
+
+.info {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#start, #restart {
+    background-color: #d35ece;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#restart:hover, #start:hover {
+    background-color: #fd98f3;
+}
+.card.visible {
+    display: block; /* Display the cards when the visible class is applied */
+}
+.card.boxOpen{
+    transform: rotateY(0deg);
+}
+.boxOpen::after{
+    transform: rotateY(180deg);
+}
+.level-text {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7rem;
+    font-weight: bold;
+    z-index: 1;
+    text-align: center;
+    color: #260c23;
+  }
+  @media(max-width: 600px){
+    .card{
+        height: 80px;
+        width: 80px;
+    }
+    body{
+        overflow-y: scroll;
+    }
+  }
